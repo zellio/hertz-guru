@@ -1,5 +1,6 @@
 var Tone = (function() {
-    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'];
+    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'],
+        AudioContext = AudioContext || webkitAudioContext;
 
 	  function Tone(type, frequency) {
 		    if (!(this instanceof Tone)) {
