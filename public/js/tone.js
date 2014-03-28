@@ -10,7 +10,7 @@ var Tone = (function() {
 		this._frequency = frequency;
 		this._context = new AudioContext();
 		this._oscillator = this._context.createOscillator();
-		this._oscillator.connect(context.destination
+		this._oscillator.connect(this._context.destination);
 		
 		if (WAVE_TYPE_CODES[this.type].indexOf(this.type) < 0)
 			this.type = 'sine';
