@@ -1,6 +1,6 @@
 require 'sinatra'
 
-# VALID_WAVE_TYPES = ['sine', 'square', 'sawtooth', 'triangle']
+VALID_WAVE_TYPES = ['sine', 'square', 'sawtooth', 'triangle']
 
 get '/' do
   redirect to("/440"), 302
@@ -11,7 +11,7 @@ get '/:hz' do
 end
 
 get '/:type/:hz' do
-  unless ['sine', 'square', 'sawtooth', 'triangle'].include? param[:type]
+  unless VALID_WAVE_TYPES.include? params[:type]
     redirect to("/sine/#{params[:hz]}"), 302
   end
 
