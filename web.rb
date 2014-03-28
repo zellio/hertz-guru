@@ -1,21 +1,23 @@
 require 'sinatra'
 
+VALID_WAVE_TYPES = ['sine', 'square', 'sawtooth', 'triangle']
+
 get '/' do
   redirect to("/440"), 302
 end
 
-get '/:freq' do
-  redirect to("/sine/#{params[:freq]}"), 302
+get '/:hz' do
+  redirect to("/sine/#{params[:hz]}"), 302
 end
 
-get '/:type/:freq' do
-  wave_types = [:sine, :square, :sawtooth, :triangle]
-  type = params[:type].to_sym
+get '/:type/:hz' do
+  unless VALID_WAVE_TYPES.include? param[:type]
+    redirect to("/sine/#{params[:hz]}"), 302
+  end
 
-  redirect to ("/sine/#{params[:freq]}"), 302 unless wave_types.include?(type)
+  unless params[:hz].to_i.to_s == params[:hz]
+    redirect to("/#{params[:type]}/440"), 302
+  end
 
-  erb :"index.html", locals: {
-    wave_type: wave_types.index(type),
-    hz_val: params[:freq]
-  }
+  erb :"index.html", locals: params
 end
