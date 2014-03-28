@@ -2,8 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <% Dir["public/js/*"].each { |file| %><script type="application/javascript" src="<%=file.sub("public","")%>"></script>
-    <%}%><title>Hertz Guru</title>
+    <script type="application/javascript">
+      var AudioContext = AudioContext || webkitAudioContext,
+          context = new AudioContext(),
+          oscillator = context.createOscillator();
+
+      oscillator.type = <%= wave_type %>;
+      oscillator.frequency.value = <%= hz_val %>;
+
+      oscillator.connect(context.destination);
+      oscillator.noteOn(0);
+    </script>
+    <title>Hertz Guru</title>
   </head>
   <body>
   </body>
