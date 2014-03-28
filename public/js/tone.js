@@ -6,9 +6,6 @@ var Tone = (function() {
             return new Tone(type, frequency);
         }
 
-        // console.log(AudioContext);
-        // var AudioContext = AudioContext || webkitAudioContext;
-
         this._type = type;
         this._frequency = frequency;
 
