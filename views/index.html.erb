@@ -2,22 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
     <script type="application/javascript" src="/js/tone.js"></script>
     <script type="application/javascript">
-      // Tone('<%=type%>', <%=hz%>).play();
+      Tone('<%=type%>', <%=hz%>).play();
     </script>
     <title>Hertz Guru</title>
   </head>
   <body>
-    <header>
-      <h1>Hz Guru</h1>
-    </header>
-    <nav></nav>
-    <main>
-      <p>application to do stuff</p>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Hertz Guru</a>
+        <div class="container">
+          <div class="navbar-header"></div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="jumbotron">
+        <h1 class="text-center"><%=type.capitalize%> wave at <%=hz%>Hz</h1>
+      </div>
     </main>
-    <footer></footer>
   </body>
 </html>
