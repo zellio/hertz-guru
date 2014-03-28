@@ -1,6 +1,7 @@
 var Tone = (function() {
-    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'];
-
+    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'],
+		AudioContext = AudioContext || webkitAudioContext;
+	
 	function Tone(type, frequency) {
 		if (!(this instanceof Tone)) {
 			return new Tone(type, frequency);
@@ -12,7 +13,7 @@ var Tone = (function() {
 		this._oscillator = this._context.createOscillator();
 		this._oscillator.connect(this._context.destination);
 		
-		if (WAVE_TYPE_CODES[this.type].indexOf(this.type) < 0)
+		if (WAVE_TYPE_CODES.indexOf(this.type) < 0)
 			this.type = 'sine';
 	}
 	
