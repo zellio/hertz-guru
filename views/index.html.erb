@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link href="/fonts/ss-social/ss-social-regular.css" rel="stylesheet" />
     <script type="application/javascript" src="/js/tone.js"></script>
     <script type="application/javascript">
       Tone('<%=type%>', <%=hz%>).play();
@@ -13,12 +14,6 @@
   <body>
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" href="#">Hertz Guru</a>
         <div class="container">
           <div class="navbar-header"></div>
@@ -27,6 +22,9 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="navbar-brand ss-icon" href="//github.com/zellio/hertz-guru">&#xF671;</a></li>
             </ul>
           </div>
         </div>
