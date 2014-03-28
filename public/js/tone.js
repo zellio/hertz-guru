@@ -1,17 +1,18 @@
 var Tone = (function() {
-    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'],
-    AudioContext = AudioContext || webkitAudioContext;
+    var WAVE_TYPE_CODES = ['sine', 'square', 'sawtooth', 'triangle'];
 
     function Tone(type, frequency) {
         if (!(this instanceof Tone)) {
             return new Tone(type, frequency);
         }
 
+        // console.log(AudioContext);
+        // var AudioContext = AudioContext || webkitAudioContext;
+
         this._type = type;
         this._frequency = frequency;
-        this._context = new AudioContext();
-        this._oscillator = this._context.createOscillator();
-        this._oscillator.connect(this._context.destination);
+
+        this.oscillator.connect(this.context.destination);
 
         if (WAVE_TYPE_CODES.indexOf(this.type) < 0)
             this.type = 'sine';
@@ -19,9 +20,26 @@ var Tone = (function() {
 
     Tone.prototype = {
         play: function() {
-            this._oscillator.type = this.typeCode;
-            this._oscillator.frequency.value = this.frequency;
-            this._oscillator.start(0);
+            this.oscillator.type = this.typeCode;
+            this.oscillator.frequency.value = this.frequency;
+            this.oscillator.start(0);
+        },
+        get context() {
+            if (this._context) {
+                return this._context;
+            }
+            if (typeof AudioContext !== 'undefined') {
+                return this._context = new AudioContext();
+            }
+            if (typeof webkitAudioContext !== 'undefined') {
+                return this._context = new webkitAudioContext();
+            }
+            throw new Error('AudioContext is not supported.');
+        },
+        get oscillator() {
+            if (this._oscillator)
+                return this._oscillator;
+            return this._oscillator = this.context.createOscillator();
         },
         get type() { return this._type },
         get frequency() { return this._frequency },
