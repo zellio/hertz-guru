@@ -9,6 +9,6 @@ Sass::Plugin.options.merge!(
 )
 use Sass::Plugin::Rack
 
-use Rack::Coffee, root: 'assets', urls: '/js'
+use Rack::Coffee, root: 'assets', urls: '/js', bare: true
 
 run HertzGuru
